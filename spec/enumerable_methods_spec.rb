@@ -33,15 +33,14 @@ end
 RSpec.describe Enumerable do
   let(:arr) { [1, 2, 3, 8, 7, 4, 5, 6] }
   let(:result) { [] }
+  let(:result2) { [] }
 
   describe '#my_each' do
-    it 'Goes through each element and performs element add 2' do
+    it 'Goes through each element and performs element block on the element' do
       arr.my_each { |x| result << x + 2 }
       expect(result).to eql([3, 4, 5, 10, 9, 6, 7, 8])
-    end
-    it 'Goes through each element and performs element times 2' do
-      arr.my_each { |x| result << x * 2 }
-      expect(result).to eql([2, 4, 6, 16, 14, 8, 10, 12])
+      arr.my_each { |x| result2 << x * 2 }
+      expect(result2).to eql([2, 4, 6, 16, 14, 8, 10, 12])
     end
   end
 
