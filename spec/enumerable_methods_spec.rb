@@ -18,4 +18,14 @@ describe Enumerable do
       expect(arr.my_any? { |i| i < 2 }).to eq(true)
     end
   end
+
+  describe '#my_none?' do
+    it 'Returns boolean false if condition is passed vise-versa' do
+      expect(arr.my_none? { |i| i >= 5 }).to eq(false)
+      expect(arr.my_none? { |i| i > 8 }).to eq(true)
+      expect(arr.my_none? { |i| i }).to eq(true)
+      expect(arr.my_none? { |i| i == 0 }).to eq(true)
+      expect(arr.my_none? { |i| i < 2 }).to eq(false)
+    end
+  end
 end
