@@ -1,6 +1,6 @@
 # -RSpec-Testing
 
-In this project we learned how to do testing with RSpec for our Enumerable Methods Project
+In this project we do testing with RSpec for our Enumerable Methods Project
 
 
 # CONTRIBUTORS 
