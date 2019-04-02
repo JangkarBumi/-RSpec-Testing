@@ -2,6 +2,8 @@ require './lib/enumerable.rb'
 
 RSpec.describe Enumerable do
   let(:arr) { [1, 2, 3, 8, 7, 4, 5, 6] }
+  let(:result) { [] }
+  let(:result2) { [] }
 
   describe '#my_any?' do
     it 'Returns boolean if condition is passed' do
@@ -22,27 +24,17 @@ RSpec.describe Enumerable do
       expect(arr.my_none? { |i| i < 2 }).to eq(false)
     end
   end
-end
-
-RSpec.describe Enumerable do
-  let(:arr) { [1, 2, 3, 1, 7, 2, 5, 1] }
 
   describe '#my_count' do
     it ' If an argument is given, counts the number of elements which equals'\
        ' to argument. If a block is given, counts the number of elements'\
        ' yielding a true value. ' do
-      expect(arr.my_count(1)).to eq(3)
+      expect(arr.my_count(1)).to eq(1)
       expect(arr.my_count).to eq(arr.length)
-      expect(arr.my_count(4)).to eq(0)
-      expect(arr.my_count(&:even?)).to eq(2)
+      expect(arr.my_count(4)).to eq(1)
+      expect(arr.my_count(&:even?)).to eq(4)
     end
   end
-end
-
-RSpec.describe Enumerable do
-  let(:arr) { [1, 2, 3, 8, 7, 4, 5, 6] }
-  let(:result) { [] }
-  let(:result2) { [] }
 
   describe '#my_each' do
     it 'Goes through each element and performs element block on the element' do
@@ -62,19 +54,14 @@ RSpec.describe Enumerable do
       expect(result).to eql([1, 0, 2, 1, 3, 2, 8, 3, 7, 4, 4, 5, 5, 6, 6, 7])
     end
   end
-end
-
-RSpec.describe Enumerable do
-  let(:arr) { [1, 2, 3, 8, 10] }
-  let(:result) { [] }
 
   describe '#my_select' do
     it 'Returns array with selected elements & return empty if
     selector is none' do
-      expect(arr.my_select { |i| i > 3 }).to eql([8, 10])
-      expect(arr.my_select { |i| i > 0 }).to eql([1, 2, 3, 8, 10])
+      expect(arr.my_select { |i| i > 3 }).to eql([8, 7, 4, 5, 6])
+      expect(arr.my_select { |i| i > 0 }).to eql([1, 2, 3, 8, 7, 4, 5, 6])
       expect(arr.my_select { |i| i > 12 }).to eql([])
-      expect(arr.my_select { |i| i == 10 }).to eql([10])
+      expect(arr.my_select { |i| i == 7 }).to eql([7])
     end
   end
 
