@@ -1,3 +1,8 @@
 linters:
   rubocop:
     display_cop_names: true
+    ExcludedMethods: ['describe', 'context']
+files:
+  ignore:
+    - 'spec/spec_helper.rb'
+    - 'spec/enumerable_methods_spec.rb'
